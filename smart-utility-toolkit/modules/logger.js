@@ -1,13 +1,9 @@
-// Small reusable logger module
+// modules/logger.js
+// Custom logger module
+
 function log(message) {
-  console.log(`[LOG] ${message}`);
+  const timestamp = new Date().toISOString();
+  console.log(`[LOG ${timestamp}] ${message}`);
 }
 
-function error(message) {
-  console.error(`[ERROR] ${message}`);
-}
-
-module.exports = {
-  log,
-  error
-};
+module.exports = log;

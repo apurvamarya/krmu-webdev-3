@@ -1,39 +1,22 @@
-// Command-line calculator application
-const calculator = require("./calculator");
+// app.js
+// Demonstrates custom module reusability
 
-const [, , operation, first, second] = process.argv;
+console.log("app.js started");
 
-const a = Number(first);
-const b = Number(second);
+const isEven = require("./modules/isEven");
+const log = require("./modules/logger");
 
-if (!operation || !Number.isFinite(a) || !Number.isFinite(b)) {
-  console.log("Usage: node app.js <add|subtract|multiply|divide> <number> <number>");
-  process.exit(1);
-}
+log("app.js execution begins");
 
-try {
-  let result;
+const numbers = [4, 7, 10, 15, 22];
 
-  switch (operation.toLowerCase()) {
-    case "add":
-      result = calculator.add(a, b);
-      break;
-    case "subtract":
-      result = calculator.subtract(a, b);
-      break;
-    case "multiply":
-      result = calculator.multiply(a, b);
-      break;
-    case "divide":
-      result = calculator.divide(a, b);
-      break;
-    default:
-      console.log("Unknown operation. Use add, subtract, multiply, or divide.");
-      process.exit(1);
-  }
+log("Checking a list of numbers for even/odd");
 
-  console.log(`Result: ${result}`);
-} catch (error) {
-  console.error(`Error: ${error.message}`);
-  process.exit(1);
-}
+numbers.forEach((num) => {
+  const result = isEven(num) ? "even" : "odd";
+  console.log(`${num} is ${result}`);
+});
+
+log("app.js execution finished");
+
+console.log("app.js finished.");

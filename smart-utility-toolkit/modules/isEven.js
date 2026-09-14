@@ -1,6 +1,9 @@
-// Returns true when a number is even.
-function isEven(number) {
-  return Number.isFinite(number) && number % 2 === 0;
+// modules/isEven.js
+// Custom module to check if a number is even
+
+function isEven(num) {
+  console.log(`[isEven module] Checking number: ${num}`);
+  return num % 2 === 0;
 }
 
 module.exports = isEven;
